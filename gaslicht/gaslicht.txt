@@ -36,3 +36,41 @@ Leverancier3-echte
  NL Groene Stroom en Gas 1 jaar Vast Actietarief  
  € 202,35
 
+********* Gaslicht -- 1 jaar -- 1e scenario **************** 
+**************** 18 - 11 - 2020 ***************
+****************************************************
+Leverancier1-Advertentie 
+
+<img src="https://static.gaslicht.com/v/5ec0ce71/UserFiles/Image/LogosV3/EnergieLeveranciers/svg/oxxio.svg" alt="Oxxio" class="c-comparison-list__provider-logo u-display--inline-block">
+  
+
+Groene Stroom en Gas 1 jaar Vast actie
+ 
+€ 205,50
+
+****************************************************
+Levarancier1-echt1e   
+ 
+<img src="https://static.gaslicht.com/v/5ec0ce71/UserFiles/Image/LogosV3/EnergieLeveranciers/svg/eneco.svg" alt="Eneco" class="c-comparison-list__provider-logo u-display--inline-block">
+  
+ 
+EuropeseWind + Gas 1 jaar vast Actie
+  
+ € 204,81
+
+****************************************************
+Leverancier2-echte
+ 
+<img src="https://static.gaslicht.com/v/5ec0ce71/UserFiles/Image/LogosV3/EnergieLeveranciers/svg/vattenfall.svg" alt="Vattenfall" class="c-comparison-list__provider-logo u-display--inline-block">
+  
+ Vaste Prijs Stroom en Gas Vast Actie tot 1 jr  
+ € 205,20
+
+****************************************************
+Leverancier3-echte
+ 
+<img src="https://static.gaslicht.com/v/5ec0ce71/UserFiles/Image/LogosV3/EnergieLeveranciers/svg/naked-energy.svg" alt="Naked Energy" class="c-comparison-list__provider-logo u-display--inline-block">
+ 
+ Stroom en gas 1 jaar vast  
+ € 205,36
+
