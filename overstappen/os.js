@@ -270,6 +270,7 @@ const cookies =   [{
 (async () => {
     const browser = await puppeteer.launch({
         headless: false,
+        // devtools: true, 
         // slowMo: 250  
         });
 //   const browser = await puppeteer.launch();
@@ -283,7 +284,7 @@ const page = await context.newPage();
   const navigationPromise = page.waitForNavigation()
   
   await page.setViewport({
-    width: 800,
+    width: 1240,
     height: 1080,
   });
     await page.goto('https://www.overstappen.nl/energie/');
@@ -368,9 +369,142 @@ await page.waitForTimeout(1000);
  await buttonClickBestedeals.click({clickCount:1})
 
 
+// wacht
+await page.waitForTimeout(1000);
+
+
+ // RESULTATEN PAGINA 
+ await page.waitForSelector('.esos-comparator-energy-app')
+ await page.reload({waitUntil: 'networkidle2'});
+
+
+
+
+// WERKT
+// const elements = await page.$x('//input[@name="isFreeToTerminate" and @value="true"]');
+// await elements[0].click({clickCount:1});
+  
+
+const [elements] = (await page.$x('//input[@name="isFreeToTerminate" and @value]'));
+// await elements[0].click({clickCount:1});
+await elements.click({clickCount:3});
+/// fucking UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'click' of undefined
+/// daarom 4x SHIFT TAB OM 3 JAAR TE selecteren
+await page.waitForTimeout(1000);
+
+await page.keyboard.down('Shift');
+await page.keyboard.press('Tab');
+await page.keyboard.press('Tab');
+await page.keyboard.press('Tab');
+await page.keyboard.press('Tab');
+await page.keyboard.up('Shift');
+await page.keyboard.press('Space');
+ 
+await page.waitForTimeout(5000);
+
+
+// await page.waitForXPath('//input[@name="contractDuration" and @type="checkbox" and @value="\\36"]');
+// const elements = await page.$x('//input[@name="contractDuration" and @type="checkbox" and @value="\\36"]');
+// await elements[0].click({clickCount:1});
+
+// await page.waitForXPath('//input[@name="contractDuration" and @type="checkbox" and @value="\\36"]');
+// const elements = await page.$x('//input[@name="contractDuration" and @type="checkbox" and @value="\\36"]');
+// await elements[0].click({clickCount:1});
+
+// await page.waitForXPath('//input[@name="isFreeToTerminate" and @value="true"]');
+// const checkbox = await page.$('//input[@name="isFreeToTerminate" and @value="true"]');
+// await checkbox.click();   
+
+// const selector = "//input[@value=36]";
+// await page.waitForSelector(selector);
+// await page.click(selector);
+
+// const selector = "";
+// await page.waitForXPath(selector);
+// await page.click(selector);
+
+// await Promise.all([
+//     page.waitForNavigation(),
+//     page.evaluate(() => {
+//         document.querySelector('//input[@name="isFreeToTerminate" and @value="true"]').click();
+//       })
+//   ]);
+
+// await Promise.all([
+//     page.waitForNavigation(),
+//     page.evaluate(() => {
+//         document.querySelector('[value="36"]').click();
+//       })
+//   ]);
+
+// await page.click('//input[@name="contractDuration" and @type="checkbox" and @value="36"]');
+// await page.select('//input[@name="contractDuration" and @type="checkbox" and @value="36"]');
+
+// await page.click('//input[@value="36"]');
+// await page.click('[value="36"]');
+
+// await page.waitForSelector('//input[@name="contractDuration" and @type="checkbox" and @value="36"]')
+// const checkbox = await page.$('//input[@name="contractDuration" and @type="checkbox" and @value="36"]');
+// await checkbox.click();
+
+// await page.waitForSelector('[value="36"]')
+// const checkbox = await page.$('[value="36"]');
+// await checkbox.click();
+
+// await page.waitForSelector('[//*[@id="esos-content"]/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]/div/div[3]/div/input')
+// const checkbox = await page.$('//*[@id="esos-content"]/div/div/div/div/div/div[1]/div/div[2]/div/div/div/div[1]/div[2]/div/div[3]/div/input');
+// await checkbox.click();
+
+
+
+/// ZOEK LOOPTIJD - tab 3x + SPACEBAR
+// await page.evaluate(() => {
+//     document.querySelector('//div[text() = "Looptijd"]').parentElement.click();
+//   });
+  
+//   await page.keyboard.press("Tab");
+//   await page.keyboard.press("Tab");  
+//   await page.keyboard.press('Spacebar');
+
+// await page.waitForSelector('//span[text() = "2 jaar, vast tarief"]//following::input')
+// const [drieJaar] = (await page.$x('//span[text() = "2 jaar, vast tarief"]//following::input'));
+// await drieJaar.click();
+// if (drieJaar) { await drieJaar.click();   }
+// await page.click(drieJaar);
+
+// await page.waitForSelector('/span[text() = "3 jaar, vast tarief"]/..')
+// const [drieJaar] = (await page.$x('//span[text() = "3 jaar, vast tarief"]'));
+// await drieJaar.click();
+// if (drieJaar) { await drieJaar.click();   }
+// await page.click(drieJaar);
+
+// const clickBtn = async () => {
+//     try {
+//       await page.evaluate(() => {
+//         const btnSelector = "//input[@name='contractDuration' and @value='36']";
+//         const btn = document.querySelector(btnSelector);
+//         btn.focus();
+//         btn.click();
+//       });
+//     } catch(e) {
+//       console.error("Unable to click button", e);
+//     }
+//   };
+//   clickBtn();
+
+// let seeWorkspacesLinkSelectr = '//input[@name="contractDuration"][@type="checkbox"][@value="12"]';
+//   await page.waitForXPath(seeWorkspacesLinkSelectr);
+//     await page.click(seeWorkspacesLinkSelectr);
+
+// page.$$eval('//input[@name="contractDuration"][@type="checkbox"][@value="12"]', checkboxes => {
+//     checkboxes.forEach(chbox => chbox.click())
+//  });
+
+
+
 
 /////////////////////////////////////////////////
-await page.waitForTimeout(6000);
+await page.waitForTimeout(10000);
 await navigationPromise
 
 
