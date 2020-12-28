@@ -377,17 +377,30 @@ await page.waitForTimeout(1000);
  await page.waitForSelector('.esos-comparator-energy-app')
  await page.reload({waitUntil: 'networkidle2'});
 
+// wacht
+await page.waitForTimeout(1000);
+
+
+
+const looptijdaanpas = (await page.$x("//input[@name='isFreeToTerminate' and @value='true']"))[0];
+await looptijdaanpas.click({clickCount: 3});
+
 
 
 
 // WERKT
 // const elements = await page.$x('//input[@name="isFreeToTerminate" and @value="true"]');
 // await elements[0].click({clickCount:1});
-  
 
-const [elements] = (await page.$x('//input[@name="isFreeToTerminate" and @value]'));
-// await elements[0].click({clickCount:1});
-await elements.click({clickCount:3});
+// Pijl omhoog op toetsenbord om 'Geen voorkeur' te selecteren
+await page.keyboard.press('ArrowUp');
+
+// const elementsa = await page.$x('//input[@name="isFreeToTerminate and @type="radio" and @value]');
+// await elementsa[0].click({clickCount:1});
+
+// const [elements] = (await page.$x('//input[@name="isFreeToTerminate" and @value]'));
+// await elements.click();
+
 /// fucking UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'click' of undefined
 /// daarom 4x SHIFT TAB OM 3 JAAR TE selecteren
 await page.waitForTimeout(1000);
@@ -400,9 +413,78 @@ await page.keyboard.press('Tab');
 await page.keyboard.up('Shift');
 await page.keyboard.press('Space');
  
-await page.waitForTimeout(5000);
+// await page.waitForTimeout(5000);
 
 
+//wacht totdat element geladen is + maak schermprint van DIV
+// const screenoverstappen = await page.$('//div[@class="esos-comparator-overview-results"]/../../div[4]');        // declare a variable with an ElementHandle
+const screenoverstappen = await page.waitForXPath('//div[@class="esos-comparator-overview-results"]/../../div[4]');        // declare a variable with an ElementHandle
+await screenoverstappen.screenshot({path: 'screenoverstappen-1-jaar.png'}); // take screenshot element in puppeteer
+
+
+
+
+// Element om in txt weg te schrijven
+const now3 = new Date();
+
+//    (//div[@class="esos-comparator-overview-results"]/../..//img)[2]
+
+
+
+    // alle nodes van element - specs
+// const title = await page.$x('(//div[@class="esos-comparator-overview-results"]/../..//img)[2]');
+// let text = await page.waitForXPath('(//div[@class="esos-comparator-overview-results"]/../..//img)[2]', title);
+// console.log(text)
+
+
+// const [getXpath] = await page.$x('(//div[@class="esos-comparator-overview-results"]/../..//img)[2]');
+// const getMsg = await page.evaluate(name => name.innerText, getXpath);
+// console.log(getMsg)
+
+const featureArticle = (await page.$x(`(//div[@class="esos-comparator-overview-results"]/../..//img)[3]`))[0];
+// const featureArticle = (await page.$x('//div[@class="esos-comparator-overview-results"]/../.. /div[4] //img '))[0];
+const text = await page.evaluate(el => {  return el.outerHTML; }, featureArticle);
+console.log(text);
+
+
+// WERKT - maar niet met haakje om xpath
+// const text = await page.evaluate(() => {
+//     // $x() is not a JS standard -
+//     // this is only sugar syntax in chrome devtools
+//     // use document.evaluate()
+//     const featureArticle = document
+//         .evaluate(
+//             '//*[@id="header"]/div/div/div/div/div/div[2]/div/div/div/div[1]/a[2]',
+//             document,
+//             null,
+//             XPathResult.FIRST_ORDERED_NODE_TYPE,
+//             null
+//         )
+//         .singleNodeValue;
+
+//     return featureArticle.textContent;
+// });
+
+// console.log(text);
+
+
+// const leverancier1 =  await page.waitForXPath('(//div[@class="esos-comparator-overview-results"]/../..//img)[2]', el => el.innerHTML);
+// const prijs1 = await page.waitForXPath('(//div[@class="esos-comparator-overview-results"]/../..//img)[2]', el => el.textContent);
+// const prijs2 = await page.waitForXPath('(//div[@class="esos-comparator-overview-results"]/../..//img)[2]', el => el.$x);
+
+
+
+
+
+//interne logmelding
+// console.log("overstappen -- 1 jaar -- 1e scenario " 
+// + now3.getFullYear() + "-"+ now3.getMonth() + "-" + now3.getDate() + " -- " + leverancier1 + prijs1 + prijs2 + "-" );
+
+
+
+
+
+// TESTCODE slectie Drie Jaar
 // await page.waitForXPath('//input[@name="contractDuration" and @type="checkbox" and @value="\\36"]');
 // const elements = await page.$x('//input[@name="contractDuration" and @type="checkbox" and @value="\\36"]');
 // await elements[0].click({clickCount:1});
